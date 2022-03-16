@@ -15,7 +15,6 @@ const regionRouter = require('./routes/GeoRoute/regionRoute')
 const geoRouter = require('./routes/GeoRoute/geoRoute')
 // const DamageProductRouter = require('./routes/OrderRoute/damageProductRoute')
 const attendanceRouter = require('./routes/AttandanceRoute/attandanceRoute')
-const questionRoute = require('./routes/QuestionRoute/questionRoute')
 const targetRoute = require('./routes/TargetRoute/targetRoute')
 
 const swaggerUi = require('swagger-ui-express');
@@ -76,7 +75,6 @@ app.use('/', healthcheck);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/attendance', attendanceRouter)
 
-app.use('/api/v1/question', questionRoute)
 
 app.use('/api/v1/target', targetRoute)
 
