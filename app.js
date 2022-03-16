@@ -16,6 +16,10 @@ const districtRoute = require('./routes/GeoRoute/districtRoute');
 const upazilaRoute = require('./routes/GeoRoute/upazilaRoute');
 const electoralSeatRoute = require('./routes/GeoRoute/electoralSeatRoute');
 const instituteRoute = require('./routes/InstituteRoute/instituteRoute');
+const pjpRoute = require('./routes/PjpRoute/pjpRoute');
+const issueRoute = require('./routes/IssueRoute/issueRoute');
+
+
 
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
@@ -81,6 +85,8 @@ app.use('/api/v1/district', districtRoute);
 app.use('/api/v1/upazila', upazilaRoute);
 app.use('/api/v1/electoralSeat', electoralSeatRoute);
 app.use('/api/v1/institute', instituteRoute);
+app.use('/api/v1/pjp', pjpRoute);
+app.use('/api/v1/issue', issueRoute);
 
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));

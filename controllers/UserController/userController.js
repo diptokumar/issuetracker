@@ -129,6 +129,21 @@ exports.setInstituteforuser = catchAsync(async (req, res, next) => {
   });
 });
 
+exports.getInstituteforuser = catchAsync(async (req, res, next) => {
+
+  
+  const schools = await User.findOne(
+    { _id: req.user._id }
+  ).select('assignSchool').populate('assignSchool');
+
+  const {assignSchool} = schools
+  // SEND RESPONSE
+  res.status(200).json({
+    status: 'success',
+    assignSchool
+  });
+});
+
 
 exports.getAllOrgUsers = catchAsync(async (req, res, next) => {
   const {orgid} = req.params;

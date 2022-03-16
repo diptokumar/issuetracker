@@ -29,6 +29,7 @@ router.route('/setrouteforusers/:userid').patch(authController.restrictTo('ADMIN
 router.route('/userpaging').get(authController.restrictTo('ADMIN', 'ORG'), userController.userPagination)
 
 
+router.route('/getUsersInstitute').get(userController.getInstituteforuser)
 
 router.route('/allusers/:orgid').get(authController.restrictTo('ADMIN', 'ORG'), userController.getAllOrgUsers)
 router.route('/orgusers/:orgid/:role').get(authController.restrictTo('ADMIN', 'ORG'), userController.getAllfilterusers)

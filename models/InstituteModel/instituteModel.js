@@ -27,6 +27,7 @@ const instituteSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'ElectoralSeat'
   },
+  address: String,
   nameEnglish: {
     type: String,
     required: [true, 'Please enter english name!']

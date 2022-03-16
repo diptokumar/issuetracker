@@ -4,7 +4,7 @@ const authController = require('../../controllers/authController');
 const router = express.Router();
 
 // Protect all routes after this middleware
-//router.use(authController.protect);
+router.use(authController.protect);
 //router.route('/district').get(authController.restrictTo('ADMIN', 'ORG'), instituteController.getallorgregion)
 
 router
@@ -13,9 +13,9 @@ router
     //.post(authController.restrictTo('ADMIN', 'ORG'), instituteController.createInstitute);
     .post(instituteController.createInstitute);
 
-// router
-//     .route('/:id')
-//     .get(authController.restrictTo('ADMIN', 'ORG'), instituteController.getsingleregion)
+router
+    .route('/:id')
+    .get(instituteController.getsingleInistitureDetails)
 //     .patch(authController.restrictTo('ADMIN', 'ORG'), instituteController.updateregion)
 //     .delete(authController.restrictTo('ADMIN', 'ORG'), instituteController.deleteregion);
 module.exports = router;

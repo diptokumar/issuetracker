@@ -1,6 +1,4 @@
-const crypto = require('crypto');
 const mongoose = require('mongoose');
-const validator = require('validator');
 
 const issueSchema = new mongoose.Schema({
   institute: {
@@ -39,9 +37,11 @@ const issueSchema = new mongoose.Schema({
   howLongWillItTake: String,
   status: {
     type: String,
-    default: 'Pending',
-    enum: ['Pending', 'Solved']
-  }
+    enum: ['Pending', 'Solved'],
+    default: 'Pending'
+  },
+  issueCreatedDate: String,
+  issueCreateMonth: String,
 },
   {
     timestamps: true

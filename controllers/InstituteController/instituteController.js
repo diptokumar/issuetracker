@@ -9,6 +9,16 @@ exports.createInstitute = catchAsync(async (req, res, next) => {
     })
 })
 
+exports.getsingleInistitureDetails = catchAsync(async (req, res, next) => {
+    const { id } = req.params;
+
+    const institute = await InstituteModel.findById(id);
+    res.status(200).json({
+        status: 'success',
+        institute,
+    })
+})
+
 exports.getAllUpazila = catchAsync(async (req, res, next) => {
     const upazilas = await UpazilaModel.find().populate([{ path: "district", model: "District", select: "name", populate: { path: "division", model: "Division", select: "name" } }]).skip(startIndex).limit(parseInt(limit));
     res.status(200).json({
