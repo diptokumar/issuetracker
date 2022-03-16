@@ -20,11 +20,6 @@ const userSchema = new mongoose.Schema({
     enum: ['USER', 'ADMIN','SO'],
     default: 'SO'
   },
-  org:{
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'User',
-      
-  },
   image: {
     type: String,
     default:"N/A"
@@ -41,28 +36,25 @@ const userSchema = new mongoose.Schema({
   linemanager:  {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
-   
   },
-  office:{
+  division:{
     type: mongoose.Schema.Types.ObjectId,
-      ref: 'Office',
-      
-  },
-  area:{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Area',
+    ref: 'RegDivisionion',
     
   },
-  region:{
+  district:{
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Region',
+    ref: 'District',
     
   },
-  teritori:{
+  upazila:{
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Teritori',
- 
+    ref: 'Upazila',
   },
+  assignSchool: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Institute',
+  }],
   password: {
     type: String,
     required: [true, 'Please provide a password'],

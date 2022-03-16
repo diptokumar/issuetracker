@@ -13,7 +13,7 @@ router.use(authController.protect );
 
 router
     .route('/todaydayclose')
-    .patch(authController.restrictTo('SO','SS', 'TO', 'RBH'), attendanceController.dayclose)
+    .patch(authController.restrictTo('BP','SS', 'TO', 'RBH'), attendanceController.dayclose)
 
 router
     .route('/todayattendanceuser/:dateid')
@@ -29,16 +29,16 @@ router.route('/myattendanceMonthly/:month').get(
 
 router
     .route('/todaydayclosecheck')
-    .get(authController.restrictTo('SO','SS', 'TO', 'RBH'), attendanceController.daycloseCheck)
+    .get(authController.restrictTo('BP','SS', 'TO', 'RBH'), attendanceController.daycloseCheck)
 
 router
     .route('/')
-    .get(authController.restrictTo('ADMIN', 'ORG', 'SO'),  attendanceController.getallAttendance)
-    .post(authController.restrictTo('ADMIN', 'ORG','SO','SS', 'TO', 'RBH'), uploadS3.single('photo'),attendanceController.createAttendance);
+    .get(authController.restrictTo('ADMIN', 'ORG', 'SR'),  attendanceController.getallAttendance)
+    .post(authController.restrictTo('ADMIN', 'ORG','BP','SS', 'TO', 'RBH'), uploadS3.single('photo'),attendanceController.createAttendance);
 
 router
     .route('/chcekAttandance')
-    .get(authController.restrictTo('ADMIN', 'ORG','SO','SS','TO', 'RBH'), attendanceController.checkAttandace)
+    .get(authController.restrictTo('ADMIN', 'ORG','BP','SS','TO', 'RBH'), attendanceController.checkAttandace)
 
 router
     .route('/userundercheckattendancce')
@@ -70,13 +70,13 @@ router
 
 router
     .route('/getUserAttendance')
-    .get(authController.restrictTo('ADMIN', 'ORG','SO','SS', 'TO', 'RBH'), attendanceController.getUserAttendance)    
+    .get(authController.restrictTo('ADMIN', 'ORG','SR','SS', 'TO', 'RBH'), attendanceController.getUserAttendance)    
 router
     .route('/chcekAttandanceLate')
-    .get(authController.restrictTo('ADMIN', 'ORG','SO','SS', 'TO', 'RBH'), attendanceController.checkAttandaceLate)
+    .get(authController.restrictTo('ADMIN', 'ORG','BP','SS', 'TO', 'RBH'), attendanceController.checkAttandaceLate)
 router
     .route('/:id')
-    .get(authController.restrictTo('ADMIN', 'ORG','SO','SS', 'TO', 'RBH'), attendanceController.getsingleAttendance)
-    .patch(authController.restrictTo('ADMIN', 'ORG', 'SO','SS', 'TO', 'RBH'), uploadS3.single('photo'), attendanceController.updateAttendance)
-    .delete(authController.restrictTo('ADMIN', 'ORG','SO','SS', 'TO', 'RBH'), attendanceController.deleteAttendance);
+    .get(authController.restrictTo('ADMIN', 'ORG','SR','SS', 'TO', 'RBH'), attendanceController.getsingleAttendance)
+    .patch(authController.restrictTo('ADMIN', 'ORG', 'SR','SS', 'TO', 'RBH'), uploadS3.single('photo'), attendanceController.updateAttendance)
+    .delete(authController.restrictTo('ADMIN', 'ORG','SR','SS', 'TO', 'RBH'), attendanceController.deleteAttendance);
 module.exports = router;

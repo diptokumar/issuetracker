@@ -9,13 +9,13 @@ const cors = require('cors');
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
 const userRouter = require('./routes/UserRoute/userRoutes');
-const areatRouter = require('./routes/GeoRoute/areaRoute')
-const teritoryRouter = require('./routes/GeoRoute/teritoryRoute')
-const regionRouter = require('./routes/GeoRoute/regionRoute')
-const geoRouter = require('./routes/GeoRoute/geoRoute')
-// const DamageProductRouter = require('./routes/OrderRoute/damageProductRoute')
-const attendanceRouter = require('./routes/AttandanceRoute/attandanceRoute')
-const targetRoute = require('./routes/TargetRoute/targetRoute')
+const attendanceRouter = require('./routes/AttandanceRoute/attandanceRoute');
+const targetRoute = require('./routes/TargetRoute/targetRoute');
+const divisionRoute = require('./routes/GeoRoute/divisionRoute');
+const districtRoute = require('./routes/GeoRoute/districtRoute');
+const upazilaRoute = require('./routes/GeoRoute/upazilaRoute');
+const electoralSeatRoute = require('./routes/GeoRoute/electoralSeatRoute');
+const instituteRoute = require('./routes/InstituteRoute/instituteRoute');
 
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
@@ -31,7 +31,7 @@ app.use(helmet());
 
 // Development logging
 // if (process.env.NODE_ENV === 'development') {
-  
+
 // }
 app.use(morgan('dev'));
 // Limit requests from same API
@@ -73,10 +73,14 @@ app.use((req, res, next) => {
 // 3) ROUTES
 app.use('/', healthcheck);
 app.use('/api/v1/users', userRouter);
-app.use('/api/v1/attendance', attendanceRouter)
+app.use('/api/v1/attendance', attendanceRouter);
+app.use('/api/v1/target', targetRoute);
 
-
-app.use('/api/v1/target', targetRoute)
+app.use('/api/v1/division', divisionRoute);
+app.use('/api/v1/district', districtRoute);
+app.use('/api/v1/upazila', upazilaRoute);
+app.use('/api/v1/electoralSeat', electoralSeatRoute);
+app.use('/api/v1/institute', instituteRoute);
 
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));

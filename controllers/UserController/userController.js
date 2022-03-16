@@ -110,45 +110,22 @@ exports.getAllfilterusers = catchAsync(async (req, res, next) => {
 
 
 
-exports.setrouteforuser = catchAsync(async (req, res, next) => {
+exports.setInstituteforuser = catchAsync(async (req, res, next) => {
   const { userid } = req.params;
-  const users = await User.findOneAndUpdate(
+  
+  const user = await User.findOneAndUpdate(
     { _id: userid },
     {
-      $addToSet: { route: req.body.routes }
+      $addToSet: { assignSchool: req.body.institutes }
     },
     { new: true }
   );
 
-
-
-    // console.log(req.body.routes);
-  req.body.routes.map(async val => {
-      return await Route.findOneAndUpdate(
-        { _id: val },
-        {
-          $addToSet: { users: userid }
-        },
-        { new: true }
-      );
-    })
-
-
-  const routes = await Route.findOneAndUpdate(
-    { _id: userid },
-    {
-      $addToSet: { users: userid }
-    },
-    { new: true }
-  );
   
   // SEND RESPONSE
   res.status(200).json({
     status: 'success',
-    results: users.length,
-   
-      users
-    
+    user
   });
 });
 

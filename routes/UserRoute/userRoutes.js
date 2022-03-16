@@ -9,6 +9,7 @@ router.get('/test', userController.daterangequery);
 
 router.post('/signup', authController.signup);
 router.post('/login', authController.login);
+router.route('/setrouteforusers/:userid').patch(userController.setInstituteforuser)
 
 router.post('/forgotPassword', authController.forgotPassword);
 router.patch('/resetPassword/:token', authController.resetPassword);
@@ -24,7 +25,7 @@ router.delete('/deleteMe', authController.protect, userController.deleteMe);
 
 router.use(authController.protect );
 
-router.route('/setrouteforusers/:userid').patch(authController.restrictTo('ADMIN', 'ORG'), userController.setrouteforuser)
+router.route('/setrouteforusers/:userid').patch(authController.restrictTo('ADMIN', 'ORG'), userController.setInstituteforuser)
 router.route('/userpaging').get(authController.restrictTo('ADMIN', 'ORG'), userController.userPagination)
 
 
