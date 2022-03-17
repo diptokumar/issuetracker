@@ -15,7 +15,7 @@ exports.getTodayPjp = catchAsync(async (req, res, next) => {
     const pjp = await PjpModel.findOne({
         userId: req.user._id,
         date: today
-    }).populate({ path: 'institute', select: 'nameEnglish address'});
+    }).populate({ path: 'institute', select: 'nameEnglish address image'});
 
     res.status(200).json({
         status: 'success',
